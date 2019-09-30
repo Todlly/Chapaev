@@ -21,8 +21,8 @@ public class Checker : MonoBehaviour
         rend.material = defaultMat;
     }
 
-    public void Hit()
+    public void Hit(Vector3 direction, float power)
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.forward * 300);
+        GetComponent<Rigidbody>().AddForce(direction * power);
     }
 }

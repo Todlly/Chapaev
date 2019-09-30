@@ -20,6 +20,7 @@ public class HighlightingRay : MonoBehaviour
 
     void Update()
     {
+        //selecting the checker under the cursor        
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Ray bRay = cam.ScreenPointToRay(Input.mousePosition);
@@ -42,6 +43,7 @@ public class HighlightingRay : MonoBehaviour
             }
         }
 
+
         if (Input.GetMouseButton(0))
         {
             if (selected)
@@ -50,16 +52,20 @@ public class HighlightingRay : MonoBehaviour
                 {
                     holded = true;
                 }
+                // getting hit direction
                 RaycastHit boardHit;
                 Physics.Raycast(bRay, out boardHit, Mathf.Infinity, layerBoard);
                 Vector3 from = new Vector3(boardHit.point.x, selChecker.transform.position.y, boardHit.point.z);
                 direction = selChecker.transform.position - from;
-                LineDrawer.DrawLine(boardHit.point + new Vector3(0f, 0.1f, 0f), selChecker.transform.position + new Vector3(0f, 0.1f, 0f));
+                if (direction.magnitude > 0.73f) //drawing aim
+                    LineDrawer.DrawLine(boardHit.point + new Vector3(0f, 0.1f, 0f), selChecker.transform.position - (direction.normalized * 0.74f));
+                else
+                    LineDrawer.EraseLine();
             }
         }
-        else if (holded)
+        else if (holded) // hitting and deselecting
         {
-            selChecker.transform.gameObject.GetComponent<Rigidbody>().AddForce(direction * 300);
+            selChecker.Hit(direction, 300f);
             LineDrawer.EraseLine();
             holded = false;
         }
