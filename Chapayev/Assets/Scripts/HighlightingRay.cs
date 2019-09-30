@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HighlightingRay : MonoBehaviour
 {
+    DirectionIndicator LineDrawer;
     Camera cam;
     int layerCheckers, layerBoard;
     private Checker selChecker;
@@ -11,6 +12,7 @@ public class HighlightingRay : MonoBehaviour
     private Vector3 direction;
     void Start()
     {
+        LineDrawer = GameObject.FindObjectOfType<DirectionIndicator>();
         layerCheckers = LayerMask.GetMask("Checkers");
         layerBoard = LayerMask.GetMask("Board");
         cam = Camera.main;
@@ -50,15 +52,15 @@ public class HighlightingRay : MonoBehaviour
                 }
                 RaycastHit boardHit;
                 Physics.Raycast(bRay, out boardHit, Mathf.Infinity, layerBoard);
-                Debug.Log(direction.ToString());
-                Debug.Log("hitpos " + boardHit.point);
                 Vector3 from = new Vector3(boardHit.point.x, selChecker.transform.position.y, boardHit.point.z);
                 direction = selChecker.transform.position - from;
+                LineDrawer.DrawLine(boardHit.point + new Vector3(0f, 0.1f, 0f), selChecker.transform.position + new Vector3(0f, 0.1f, 0f));
             }
         }
         else if (holded)
         {
             selChecker.transform.gameObject.GetComponent<Rigidbody>().AddForce(direction * 300);
+            LineDrawer.EraseLine();
             holded = false;
         }
     }
