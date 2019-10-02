@@ -57,6 +57,8 @@ public class HighlightingRay : MonoBehaviour
                 Physics.Raycast(bRay, out boardHit, Mathf.Infinity, layerBoard);
                 Vector3 from = new Vector3(boardHit.point.x, selChecker.transform.position.y, boardHit.point.z);
                 direction = selChecker.transform.position - from;
+                Debug.Log(from.y);
+                Debug.Log(selChecker.transform.position.y);
                 if (direction.magnitude > 0.73f) //drawing aim
                     LineDrawer.DrawLine(boardHit.point + new Vector3(0f, 0.1f, 0f), selChecker.transform.position - (direction.normalized * 0.74f));
                 else
