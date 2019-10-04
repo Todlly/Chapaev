@@ -6,6 +6,7 @@ public class Checker : MonoBehaviour
 {
     public Material highlightedMat;
     public Material defaultMat;
+    public string color;
     private Renderer rend;
     private void Start()
     {

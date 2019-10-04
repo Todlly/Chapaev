@@ -10,12 +10,15 @@ public class HighlightingRay : MonoBehaviour
     private Checker selChecker;
     private bool selected = false, holded = false;
     private Vector3 direction;
+
+    private Turns turnsManager;
     void Start()
     {
         LineDrawer = GameObject.FindObjectOfType<DirectionIndicator>();
         layerCheckers = LayerMask.GetMask("Checkers");
         layerBoard = LayerMask.GetMask("Board");
         cam = Camera.main;
+        turnsManager = FindObjectOfType<Turns>();
     }
 
     void Update()
@@ -28,9 +31,12 @@ public class HighlightingRay : MonoBehaviour
         {
             if (!selected)
             {
-                selChecker = hit.transform.gameObject.GetComponent<Checker>();
-                selChecker.Highlight();
-                selected = true;
+                if (turnsManager.CheckTurn(hit.transform.gameObject.GetComponent<Checker>()))
+                {
+                    selChecker = hit.transform.gameObject.GetComponent<Checker>();
+                    selChecker.Highlight();
+                    selected = true;
+                }
             }
         }
         else if (selected)
