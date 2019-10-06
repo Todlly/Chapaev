@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5489369391578419752
+--- !u!1 &7100858633783066544
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5489369391578419763}
-  - component: {fileID: 5489369391578419764}
-  - component: {fileID: 5489369391578419765}
-  - component: {fileID: 5489369391578419767}
-  - component: {fileID: 5489369391578419766}
-  - component: {fileID: 7529238265340920614}
+  - component: {fileID: 7100858633783066539}
+  - component: {fileID: 7100858633783066540}
+  - component: {fileID: 7100858633783066541}
+  - component: {fileID: 7100858633783066543}
+  - component: {fileID: 7100858633783066542}
+  - component: {fileID: 5104904261681295038}
   m_Layer: 8
-  m_Name: Checkerw
+  m_Name: Checkerb
   m_TagString: Checker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5489369391578419763
+--- !u!4 &7100858633783066539
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489369391578419752}
+  m_GameObject: {fileID: 7100858633783066544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.133, y: 9.422, z: 4.309}
+  m_LocalPosition: {x: -3.22, y: 1.172, z: 6.38}
   m_LocalScale: {x: 1.316, y: 0.11671736, z: 1.316}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5489369391578419764
+--- !u!33 &7100858633783066540
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489369391578419752}
+  m_GameObject: {fileID: 7100858633783066544}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5489369391578419765
+--- !u!23 &7100858633783066541
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489369391578419752}
+  m_GameObject: {fileID: 7100858633783066544}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c7c3e77ed2c7334784ca27a8dbffc2c, type: 2}
+  - {fileID: 2100000, guid: fcbbe4f5cda8b68458df633d991adc51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,13 +80,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!54 &5489369391578419767
+--- !u!54 &7100858633783066543
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489369391578419752}
+  m_GameObject: {fileID: 7100858633783066544}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
@@ -96,13 +96,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!64 &5489369391578419766
+--- !u!64 &7100858633783066542
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489369391578419752}
+  m_GameObject: {fileID: 7100858633783066544}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -110,18 +110,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &7529238265340920614
+--- !u!114 &5104904261681295038
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489369391578419752}
+  m_GameObject: {fileID: 7100858633783066544}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2904e945043ddbf43a2871c69eab87cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   highlightedMat: {fileID: 2100000, guid: 967d7fad8fe99a84d8020364d65243e1, type: 2}
-  defaultMat: {fileID: 2100000, guid: 2c7c3e77ed2c7334784ca27a8dbffc2c, type: 2}
-  color: white
+  defaultMat: {fileID: 2100000, guid: fcbbe4f5cda8b68458df633d991adc51, type: 2}
+  color: black

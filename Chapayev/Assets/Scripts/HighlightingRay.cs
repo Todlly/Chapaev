@@ -7,7 +7,7 @@ public class HighlightingRay : MonoBehaviour
     DirectionIndicator LineDrawer;
     Camera cam;
     int layerCheckers, layerBoard;
-    private Checker selChecker;
+    private Checker selChecker, movingChecker;
     private bool selected = false, holded = false;
     private Vector3 direction;
 
@@ -63,8 +63,6 @@ public class HighlightingRay : MonoBehaviour
                 Physics.Raycast(bRay, out boardHit, Mathf.Infinity, layerBoard);
                 Vector3 from = new Vector3(boardHit.point.x, selChecker.transform.position.y, boardHit.point.z);
                 direction = selChecker.transform.position - from;
-                Debug.Log(from.y);
-                Debug.Log(selChecker.transform.position.y);
                 if (direction.magnitude > 0.73f) //drawing aim
                     LineDrawer.DrawLine(boardHit.point + new Vector3(0f, 0.1f, 0f), selChecker.transform.position - (direction.normalized * 0.74f));
                 else
@@ -75,7 +73,32 @@ public class HighlightingRay : MonoBehaviour
         {
             selChecker.Hit(direction, 300f);
             LineDrawer.EraseLine();
+            movingChecker = selChecker;
             holded = false;
+        }
+
+        if (movingChecker != null && movingChecker.GetComponent<Rigidbody>().velocity.magnitude == 0)
+        {
+            turnsManager.ChangeTurn();
+            movingChecker = null;
+        }
+
+    }
+
+    public void ClearMovingChecker()
+    {
+        movingChecker = null;
+    }
+
+    public bool CheckChecker(GameObject checker)
+    {
+        if (checker.GetComponent<Checker>() == movingChecker)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

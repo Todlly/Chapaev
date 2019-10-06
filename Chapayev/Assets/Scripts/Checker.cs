@@ -24,6 +24,6 @@ public class Checker : MonoBehaviour
 
     public void Hit(Vector3 direction, float power)
     {
-        GetComponent<Rigidbody>().AddForce(direction * power);
+        GetComponent<Rigidbody>().velocity = direction * power * Time.deltaTime;
     }
 }

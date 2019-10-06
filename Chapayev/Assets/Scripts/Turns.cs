@@ -21,7 +21,7 @@ public class Turns : MonoBehaviour
         }
         ChangeCameraPosition();
     }
-    public void ChangeCameraPosition()
+    private void ChangeCameraPosition()
     {
         if (isMoving && neededPosition != null)
         {
