@@ -27,7 +27,7 @@ public class Turns : MonoBehaviour
         {
             if ((neededPosition.transform.position - this.transform.position).magnitude >= 0.01f)
             {
-                this.transform.position = Vector3.MoveTowards(this.transform.position, neededPosition.transform.position, 14f * Time.deltaTime);
+                this.transform.position = Vector3.MoveTowards(this.transform.position, neededPosition.transform.position, 5f * Time.deltaTime);
                 this.transform.rotation = Quaternion.Lerp(this.transform.rotation, neededPosition.transform.rotation, 0.06f);
             }
             else
