@@ -8,13 +8,26 @@ public class Checker : MonoBehaviour
     public Material defaultMat;
     public string color;
     private Renderer rend;
+    public GameObject floor;
+    private CheckersGraveyard graveYard;
+
     private void Start()
     {
         rend = GetComponent<Renderer>();
+        graveYard = FindObjectOfType<CheckersGraveyard>();
     }
+
     public void Highlight()
     {
         rend.material = highlightedMat;
+    }
+
+    private void Update()
+    {
+        if(transform.position.y <= floor.transform.position.y)
+        {
+            Die();
+        }
     }
 
     public void DeHighlight()
@@ -25,5 +38,20 @@ public class Checker : MonoBehaviour
     public void Hit(Vector3 direction, float power)
     {
         GetComponent<Rigidbody>().velocity = direction * power * Time.deltaTime;
+    }
+
+    private void Die()
+    {
+        if (FindObjectOfType<HighlightingRay>().CheckChecker(gameObject))
+        {
+            FindObjectOfType<Turns>().ChangeTurn();
+            FindObjectOfType<HighlightingRay>().ClearMovingChecker();
+        }
+        PointAdd(color);
+    }
+
+    private void PointAdd(string losedColor)
+    {
+        graveYard.PutToGraveyard(gameObject, color);
     }
 }

@@ -3,7 +3,13 @@ guid: 7053b9a49a8cbe745a3a5a3e6917712a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - blackSpawners: {instanceID: 0}
+  - whiteSpawners: {instanceID: 0}
+  - blackChecker: {fileID: 7100858633783066544, guid: 768dfd1a79b6d8d418bf186234069b21,
+      type: 3}
+  - whiteChecker: {fileID: 5489369391578419752, guid: e663b36b8a7f0e24882751b96f33820f,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class CheckersSpawner : MonoBehaviour
 {
-    public GameObject blackSpawners, whiteSpawners, blackChecker, whiteChecker;
-    private Transform[] blackPositions, whitePositions;
+    public GameObject blackChecker, whiteChecker;
+
+    [SerializeField]
+    private GameObject[] blackSpawners = new GameObject[8];
+    [SerializeField]
+    private GameObject[] whiteSpawners = new GameObject[8];
 
     private void Start()
     {
-        blackPositions = blackSpawners.GetComponentsInChildren<Transform>();
-        whitePositions = whiteSpawners.GetComponentsInChildren<Transform>();
-
-        foreach (var transform in blackPositions)
+        foreach (var spawner in blackSpawners)
         {
-            GameObject.Instantiate(blackChecker, transform.position, transform.rotation);
+            GameObject.Instantiate(blackChecker, spawner.transform.position, spawner.transform.rotation);
         }
 
-        foreach (var transform in whitePositions)
+        foreach (var spawner in whiteSpawners)
         {
-            GameObject.Instantiate(whiteChecker, transform.position, transform.rotation);
+            GameObject.Instantiate(whiteChecker, spawner.transform.position, spawner.transform.rotation);
         }
     }
 }
