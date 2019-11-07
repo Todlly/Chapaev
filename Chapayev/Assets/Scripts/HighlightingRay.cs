@@ -8,10 +8,21 @@ public class HighlightingRay : MonoBehaviour
     Camera cam;
     int layerCheckers, layerBoard;
     private Checker selChecker, movingChecker;
-    private bool selected = false, holded = false;
+    private bool selected = false, holded = false, checkersSteady = true;
     private Vector3 direction;
+    private List<GameObject> aliveCheckers = new List<GameObject>();
 
     private Turns turnsManager;
+
+    public void AddAliveChecker(GameObject checker)
+    {
+        aliveCheckers.Add(checker);
+    }
+    public void DeleteAliveChecker(GameObject checker)
+    {
+        aliveCheckers.Remove(checker);
+    }
+
     void Start()
     {
         LineDrawer = GameObject.FindObjectOfType<DirectionIndicator>();
@@ -64,7 +75,9 @@ public class HighlightingRay : MonoBehaviour
                 Vector3 from = new Vector3(boardHit.point.x, selChecker.transform.position.y, boardHit.point.z);
                 direction = selChecker.transform.position - from;
                 if (direction.magnitude > 0.22f) //drawing aim
+                {
                     LineDrawer.DrawLine(boardHit.point + new Vector3(0f, 0.1f, 0f), selChecker.transform.position - (direction.normalized * 0.22f));
+                }
                 else
                     LineDrawer.EraseLine();
             }
@@ -77,12 +90,21 @@ public class HighlightingRay : MonoBehaviour
             holded = false;
         }
 
-        if (movingChecker != null && movingChecker.GetComponent<Rigidbody>().velocity.magnitude == 0)
+        foreach(GameObject checker in aliveCheckers)
+        {
+            if(checker.GetComponent<Rigidbody>().velocity.magnitude != 0)
+            {
+                checkersSteady = false;
+            }
+        }
+
+        if (movingChecker != null && checkersSteady)
         {
             turnsManager.ChangeTurn();
             movingChecker = null;
         }
 
+        checkersSteady = true;
     }
 
     public void ClearMovingChecker()

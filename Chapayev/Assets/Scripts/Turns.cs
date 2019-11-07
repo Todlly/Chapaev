@@ -6,7 +6,7 @@ public class Turns : MonoBehaviour
 {
     public string turn;
     public GameObject posWhite, posBlack, neededPosition;
-    bool isMoving;
+    bool camIsMoving;
     private void Start()
     {
         this.transform.position = posWhite.transform.position;
@@ -23,7 +23,7 @@ public class Turns : MonoBehaviour
     }
     private void ChangeCameraPosition()
     {
-        if (isMoving && neededPosition != null)
+        if (camIsMoving && neededPosition != null)
         {
             if ((neededPosition.transform.position - this.transform.position).magnitude >= 0.01f)
             {
@@ -35,7 +35,7 @@ public class Turns : MonoBehaviour
                 this.transform.position = neededPosition.transform.position;
                 this.transform.rotation = neededPosition.transform.rotation;
                 neededPosition = null;
-                isMoving = false;
+                camIsMoving = false;
             }
         }
     }
@@ -55,13 +55,13 @@ public class Turns : MonoBehaviour
         if (turn == "white")
         {
             neededPosition = posBlack;
-            isMoving = true;
+            camIsMoving = true;
             turn = "black";
         }
         else
         {
             neededPosition = posWhite;
-            isMoving = true;
+            camIsMoving = true;
             turn = "white";
         }
     }

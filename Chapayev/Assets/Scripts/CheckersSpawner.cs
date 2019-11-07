@@ -15,12 +15,14 @@ public class CheckersSpawner : MonoBehaviour
     {
         foreach (var spawner in blackSpawners)
         {
-            GameObject.Instantiate(blackChecker, spawner.transform.position, spawner.transform.rotation);
+            GameObject checker = GameObject.Instantiate(blackChecker, spawner.transform.position, spawner.transform.rotation);
+            FindObjectOfType<HighlightingRay>().AddAliveChecker(checker);
         }
 
         foreach (var spawner in whiteSpawners)
         {
-            GameObject.Instantiate(whiteChecker, spawner.transform.position, spawner.transform.rotation);
+            GameObject checker = GameObject.Instantiate(whiteChecker, spawner.transform.position, spawner.transform.rotation);
+            FindObjectOfType<HighlightingRay>().AddAliveChecker(checker);
         }
     }
 }

@@ -42,15 +42,12 @@ public class Checker : MonoBehaviour
 
     private void Die()
     {
-        if (FindObjectOfType<HighlightingRay>().CheckChecker(gameObject))
-        {
-            FindObjectOfType<Turns>().ChangeTurn();
-            FindObjectOfType<HighlightingRay>().ClearMovingChecker();
-        }
-        PointAdd(color);
+        HighlightingRay manager = FindObjectOfType<HighlightingRay>();
+        manager.DeleteAliveChecker(gameObject);
+        PointAdd();
     }
 
-    private void PointAdd(string losedColor)
+    private void PointAdd()
     {
         graveYard.PutToGraveyard(gameObject, color);
     }
