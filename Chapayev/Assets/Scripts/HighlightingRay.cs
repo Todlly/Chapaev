@@ -40,7 +40,7 @@ public class HighlightingRay : MonoBehaviour
         Ray bRay = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerCheckers))
         {
-            if (!selected)
+            if (!selected && movingChecker == null)
             {
                 if (turnsManager.CheckTurn(hit.transform.gameObject.GetComponent<Checker>()))
                 {
