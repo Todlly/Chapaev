@@ -9,6 +9,8 @@ public class CheckersGraveyard : MonoBehaviour
     [SerializeField]
     private GameObject[] blackGraves = new GameObject[8];
 
+    public CheckersCounter whiteCounter, blackCounter;
+
     private int whiteGravesCounter = 0, blackGravesCounter = 0;
 
     public void PutToGraveyard(GameObject diedChecker, string color)
@@ -17,10 +19,12 @@ public class CheckersGraveyard : MonoBehaviour
         {
             diedChecker.transform.position = whiteGraves[whiteGravesCounter].transform.position;
             whiteGravesCounter++;
+            whiteCounter.RemovePoint();
         }else if(color == "black")
         {
             diedChecker.transform.position = blackGraves[blackGravesCounter].transform.position;
             blackGravesCounter++;
+            blackCounter.RemovePoint();
         }
 
         diedChecker.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
