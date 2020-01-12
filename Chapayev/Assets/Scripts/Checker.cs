@@ -38,6 +38,13 @@ public class Checker : MonoBehaviour
     public void Hit(Vector3 direction, float power)
     {
         GetComponent<Rigidbody>().velocity = direction * power * Time.deltaTime;
+        GetComponent<AudioSource>().Play();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Checker")
+            GetComponent<AudioSource>().Play();
     }
 
     private void Die()

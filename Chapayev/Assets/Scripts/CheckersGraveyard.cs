@@ -8,6 +8,8 @@ public class CheckersGraveyard : MonoBehaviour
     private GameObject[] whiteGraves = new GameObject[8];
     [SerializeField]
     private GameObject[] blackGraves = new GameObject[8];
+    public string Winners;
+    public GameObject WinMenu;
 
     public CheckersCounter whiteCounter, blackCounter;
 
@@ -30,9 +32,14 @@ public class CheckersGraveyard : MonoBehaviour
         diedChecker.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         diedChecker.GetComponent<Collider>().enabled = false;
 
-        if (whiteGravesCounter == 8 || blackGravesCounter == 8)
+        if (whiteGravesCounter == 8)
         {
-
+            Winners = "Black";
+            WinMenu.SetActive(true);
+        }else if(blackGravesCounter == 8)
+        {
+            Winners = "White";
+            WinMenu.SetActive(true);
         }
     }
 }

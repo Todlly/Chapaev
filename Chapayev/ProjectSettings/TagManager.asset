@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checker
   - Floor
+  - WinMenu
   layers:
   - Default
   - TransparentFX
