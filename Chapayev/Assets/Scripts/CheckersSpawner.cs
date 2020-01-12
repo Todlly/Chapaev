@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckersSpawner : MonoBehaviour
 {
+    
     public GameObject blackChecker, whiteChecker;
 
     [SerializeField]
@@ -13,6 +14,7 @@ public class CheckersSpawner : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<HighlightingRay>().ClearAliveCheckers();
         foreach (var spawner in blackSpawners)
         {
             GameObject checker = GameObject.Instantiate(blackChecker, spawner.transform.position, spawner.transform.rotation);

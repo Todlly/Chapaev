@@ -10,6 +10,7 @@ public class HighlightingRay : MonoBehaviour
     private Checker selChecker, movingChecker;
     private bool selected = false, holded = false, checkersSteady = true;
     private Vector3 direction;
+    [SerializeField]
     private List<GameObject> aliveCheckers = new List<GameObject>();
 
     private Turns turnsManager;
@@ -22,9 +23,14 @@ public class HighlightingRay : MonoBehaviour
     {
         aliveCheckers.Remove(checker);
     }
+    public void ClearAliveCheckers()
+    {
+        aliveCheckers.Clear();
+    }
 
     void Start()
     {
+        aliveCheckers.Clear();
         LineDrawer = GameObject.FindObjectOfType<DirectionIndicator>();
         layerCheckers = LayerMask.GetMask("Checkers");
         layerBoard = LayerMask.GetMask("Board");
